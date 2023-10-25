@@ -1,0 +1,41 @@
+
+#contact-form {
+    margin-bottom: 2rem;
+
+    form {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        :is(input, textarea):hover {
+            border-color: $link-hover;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background-color: $secondary;
+            color: $primary;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            color: $link-hover;
+        }
+    }
+}

@@ -1,0 +1,46 @@
+@import './variables';
+
+/* header-mixin */
+header {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    background-color: $secondary;
+    color: $primary;
+    h1 {
+        margin: 0;
+        flex: 2;
+        padding: 1.2% 0;
+    }
+
+    .nav-bar {
+        flex: 1;
+        padding: 1% 0;
+        background-color: $secondary;
+
+        ul {
+            display: flex;
+            justify-content: space-around;
+
+            li {
+                text-align: right;
+                list-style: none;
+                margin-right: 10px;
+                /* Adjust the spacing between items as needed */
+
+                a {
+                    color: $primary;
+                    text-decoration: none;
+                }
+                a:hover {
+                    color: $link-hover;
+                }
+            }
+            li:last-child{
+                margin-right: 0;
+                /* Remove margin for the last item */
+            }
+        }
+
+    }
+}

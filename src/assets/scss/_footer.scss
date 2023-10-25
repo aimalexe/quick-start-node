@@ -1,0 +1,28 @@
+@import './variables';
+
+/* footer-mixin */
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: $secondary;
+    color: $primary;
+
+    p {
+        margin: 0;
+    }
+
+    .social-links {
+        margin-top: 20px;
+
+        a {
+            color: $primary;
+            margin: 0 10px;
+            font-size: 15px;
+            text-decoration: none;
+        }
+        a:hover {
+            color: $link-hover;
+        }
+    }
+
+}

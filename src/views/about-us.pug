@@ -1,0 +1,34 @@
+include ./components/header-mixin.pug
+include ./components/footer-mixin.pug
+
+doctype html
+html(lang="en")
+head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title About Us
+    style 
+        include ../../public/styles/index.min.css
+body
+
+    +header 
+    main
+        h1#title About Us
+        section#about-content
+            h2 Our Story
+            p Welcome to our company! We are passionate about what we do and are dedicated to providing top-quality services to our customers.
+        section#team
+            h2 Our Team
+            .team-member
+                img(src="/images/avatar1.png" alt="Team Member 1")
+                h3 John Doe
+                p Founder & CEO
+            .team-member
+                img(src="/images/avatar2.png" alt="Team Member 2")
+                h3 Jane Smith
+                p Creative Director
+            .team-member
+                img(src="/images/avatar1.png" alt="Team Member 3")
+                h3 Michael Johnson
+                p Lead Developer
+    +footer

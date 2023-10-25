@@ -1,0 +1,30 @@
+include ../components/header-mixin.pug
+include ../components/footer-mixin.pug
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        title Contact Us Email
+
+        style
+            include ../../../public/styles/index.min.css
+
+    body
+        +header 
+
+        #container
+            h2 Contact Form Submission
+            p Thank you for your inquiry, #[span.username= name]!
+
+            h3 User Information
+            p
+                | Name: #[strong= name]
+                br
+                | Email: #[strong= email]
+
+            h3 User Message
+            .message
+                each paragraph in message.split('\n')
+                    p= paragraph
+        +footer

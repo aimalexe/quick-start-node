@@ -1,0 +1,29 @@
+
+/* Reset some default styles */
+h1,
+h2,
+h3,
+label,
+input,
+textarea,
+button,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+@import './variables';
+@import './header';
+@import './home';
+@import './about-us';
+@import './contact-us';
+@import './page-not-found';
+@import './contact-us-email-template';
+@import './footer';
+
+body {
+    font-family: $font;
+    background-color: $primary;
+    margin: 0;
+    padding: 0;
+}

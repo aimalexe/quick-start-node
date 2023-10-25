@@ -1,0 +1,35 @@
+include ./components/header-mixin.pug
+include ./components/footer-mixin.pug
+
+doctype html
+html
+  head
+    title=title
+
+    style 
+      include ../../public/styles/index.min.css
+
+  body
+    +header
+
+    main
+      h1#title Home
+      section.intro
+        h2 What is #{title}?
+        p #{title} is a template for quickly setting up Node.js projects.
+      section.features
+        h2 Features
+        ul
+          li Easy project structure
+          li Pug for templating
+          li CSS styling
+          li Customizable and extensible
+      section.get-started
+        h2 Get Started
+        p To get started with your project:
+        ol
+          li Clone this repository: git clone https://github.com/your-username/quick-start-node.git
+          li Install dependencies: npm install
+          li Customize and build your project
+
+    +footer

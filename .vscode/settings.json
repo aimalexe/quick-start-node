@@ -1,5 +1,21 @@
 {
     "cSpell.words": [
+        "alphanum",
+        "camelcase",
+        "dirsfirst",
+        "integ",
+        "middlewares",
         "Stackoverflow"
+    ],
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "compressed",
+            "extensionName": ".min.css",
+            "savePath": "/public/styles",
+            "savePathReplacementPairs": null
+        }
+    ],
+    "liveSassCompile.settings.includeItems": [
+        "/src/assets/scss/index.scss" // Adjust the path to match your project's directory structure
     ]
 }
