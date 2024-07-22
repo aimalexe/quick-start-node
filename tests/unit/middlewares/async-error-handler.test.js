@@ -29,7 +29,7 @@ describe('asyncHandler', () => {
         expect(mockRouteHandler).toHaveBeenCalledWith(mockRequest, mockResponse, mockNext);
         expect(logger.error).toHaveBeenCalledWith(
             `error occurred when ${mockRequest.method} request is made for ${mockRequest.url}. error: %s`,
-            mockError
+            mockError,
         );
         expect(mockNext).toHaveBeenCalledWith(mockError);
     });

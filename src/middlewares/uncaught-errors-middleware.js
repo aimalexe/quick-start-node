@@ -36,7 +36,7 @@ export const uncaughtErrors = (error, request, response, next) => {
     process.exit(1); // You might want to handle this differently in production like below..
 
     /*
-    if (!isOperational && config.get('APP_ENV') === 'development') {
+    if (!isOperational && process.env.NODE_ENV === 'development') {
         mongoose.connection.close(() => {
             console.log('Database connection closed');
 

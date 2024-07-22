@@ -1,6 +1,51 @@
 import { existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import dotenv from 'dotenv';
+
+import { AppError } from '../utilities/index.js';
+
+// Export a function that performs configuration validation
+export const setEnvironmentConfig = () => {
+    // Get the directory name
+    const __dirname = dirname(fileURLToPath(import.meta.url));
+
+    const environmentDirectory = join(__dirname, '../../env');
+    const environmentFilesToCheck = ['production', 'development', 'test'];
+    let environmentFileFound = false;
+
+    // Check if the env directory exists and has the required config files.
+    if (existsSync(environmentDirectory)) {
+        // Check if any of the config files are present within the directory.
+        for (const environment of environmentFilesToCheck) {
+            const filePath = join(environmentDirectory, `.env.${environment}`);
+            if (existsSync(filePath)) {
+                dotenv.config({ path: filePath });
+                environmentFileFound = true;
+                break;
+            }
+        }
+
+        if (!environmentFileFound) {
+            throw new AppError(`None of the specified .env files (${environmentFilesToCheck.join(', ')}) are present in the env directory.`, '7005', false);
+        }
+
+        // Check for essential configurations
+        const requiredEnvironmentVariables = ['PORT', 'NODE_ENV', 'BASE_URL', 'JWT_PRIVATE_KEY', 'DB_USERNAME', 'DB_PASSWORD', 'DB_CLUSTER', 'DB_CLUSTER_ID', 'DB_COLLECTION', 'MAILER_EMAIL', 'MAILER_PASSWORD'];
+        const missingVariables = requiredEnvironmentVariables.filter(variableName => !process.env[variableName]);
+
+        if (missingVariables.length > 0) {
+            throw new AppError(`CONFIG_ERROR: Missing required environment variables: ${missingVariables.join(', ')}.`, '7002', false);
+        }
+    } else {
+        throw new AppError('Config directory does not exist in app\'s root. Please create one.', '7004', false);
+    }
+};
+
+
+/* import { existsSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import config from 'config';
 
 import { AppError } from '../utilities/index.js';
@@ -73,4 +118,4 @@ export const setEnvironmentConfig = () => {
     }
     else
         throw new AppError('config directory does not exist in app\'s root. please create one.', '7004', false);
-};
+}; */

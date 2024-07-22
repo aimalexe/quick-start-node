@@ -1,7 +1,6 @@
-import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import pug from 'pug';
-import config from 'config';
 
 import { logger, transporter } from '../configurations/index.js';
 import { getProjectName } from '../utilities/index.js';
@@ -37,7 +36,7 @@ export const postContactUsEmailForm = async (request, response) => {
     // Create email data
     const emailData = {
         from: email,
-        to: config.get('MAILER.email'),
+        to: process.env.MAILER_EMAIL,
         subject: 'New Contact Form Submission',
         html,
     };
