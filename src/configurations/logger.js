@@ -1,6 +1,5 @@
 import { createLogger, format, transports } from 'winston';
 // const { createLogger, format, transports } = require('winston');
-import config from 'config';
 
 const { combine, colorize, timestamp, printf, json, errors, splat, simple } = format;
 
@@ -33,7 +32,7 @@ const fileFormat = combine(
 );
 
 // Determine log level based on environment
-const logLevel = config.get('APP_ENV') === 'development' ? 'verbose' : 'info';
+const logLevel = process.env.NODE_ENV === 'development' ? 'verbose' : 'info';
 
 // creating instance of logger
 const logger = createLogger({
@@ -91,4 +90,4 @@ const logger = createLogger({
 }); */
 
 
-export {logger};
+export { logger };

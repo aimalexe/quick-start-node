@@ -34,7 +34,7 @@ describe('sendResponse - basic functionality', () => {
                 status: error.statusName,
                 name: error.name,
                 isOperational: error.isOperational,
-                details: error.stack
+                details: error.stack,
             },
         });
     });

@@ -1,8 +1,7 @@
 import crypto from 'node:crypto';
-import config from 'config';
 
-import { User, TemporaryToken } from '../models/index.js';
 import { transporter } from '../configurations/index.js';
+import { TemporaryToken, User } from '../models/index.js';
 import { sendResponse } from '../utilities/format-response.js';
 
 
@@ -31,11 +30,11 @@ export const sendLink = async (request, response) => {
         await token.save();
     }
 
-    const link = `${config.get('BASE_URL')}/api/reset-password/${user._id}/${token.token}`;
+    const link = `${process.env.BASE_URL}/api/reset-password/${user._id}/${token.token}`;
 
     // Send password reset link via email
     await transporter.sendMail({
-        from: config.get('MAILER.email'),
+        from: process.env.MAILER_EMAIL,
         to: user.email,
         subject: 'Password Reset Link',
         text: link,

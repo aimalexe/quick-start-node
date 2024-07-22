@@ -1,7 +1,7 @@
 import express from 'express';
-import config from 'config';
+import './env/env.js';
 
-import { setEnvironmentConfig, logger, connect2DB } from './src/configurations/index.js';
+import { connect2DB, logger, setEnvironmentConfig } from './src/configurations/index.js';
 import { useMiddlewares } from './src/middlewares/index.js';
 import routes from './src/routes/index.js';
 
@@ -14,8 +14,8 @@ const main = () => {
     connect2DB(); // Connect to the database
 
     // Start the server for listening on a port and export it for testing purposes.
-    const server = app.listen(config.get('PORT'), () => {
-        logger.info(`App server is listening on port: ${config.get('PORT')} for ${config.get('APP_ENV')}`);
+    const server = app.listen(process.env.PORT, () => {
+        logger.info(`App server is listening on port: ${process.env.PORT} for ${process.env.NODE_ENV}`);
     });
 
     return server; // Export the server for testing purposes
